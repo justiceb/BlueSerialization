@@ -1,0 +1,2 @@
+# BlueSerialization
+BlueSerializer core
