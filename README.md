@@ -71,6 +71,7 @@ This repository only houses the core for the framework.  You first need to decid
 | ------------- | ------------- | ------------- |
 | JSON  | [BlueJSONTextSerializer](https://github.com/justiceb/BlueJSONTextSerializer)  | JSONtext |
 | TOML  | [BlueTOMLSerializer](https://github.com/justiceb/BlueTOMLSerializer)  | LV-TOML |
+
 Installing one of these packages will pull down all of the dependencies that you need.
 
 ## User Guide
