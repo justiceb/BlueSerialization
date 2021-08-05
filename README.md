@@ -79,6 +79,7 @@ Installing one of these packages will pull down all of the dependencies that you
 
  1. Open/create a LabVIEW class. Inherit your class from BlueSerializable.lvclass. (You can drop something from the BlueSerializable palette down onto your code to bring the class into memory such that it can be inherited from.)
  2. Learn the project provider menu items, listed below:
+
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/1.png?raw=true)
 
 ### "Create Serializable Methods"
