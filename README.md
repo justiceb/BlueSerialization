@@ -97,7 +97,9 @@ This script will behave differently depending on whether or not it's the first t
 	- delete, and rescript creation of the Get/SetSerializableData.vi. (We did this in case we ever needed to update these methods and fix all the VIs out in the world.)
 
 When this script finishes, you should see the following new files:
+
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/2.png?raw=true)
+
 A few notes:
 
 -   The Get/SetSerializableData VIs are dynamic overrides. These provide access to the SerializableData in the private data. You should theoretically never have to modify these VIs. In fast, please DON'T modify these VIs unless you know what you are doing and have a good reason.
@@ -108,7 +110,9 @@ A few notes:
 This script will allow for you to change your serializable data in a way that would normally create a backwards incompatible jump with respect to old serialized text.
 
 When the script finishes, you should see the following new files in your project:
+
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/3.png?raw=true)
+
 - GetVersionSerializableData.vi
 	- You theoretically never have to touch this file
 - HandleVersionMutation.vi
@@ -124,7 +128,9 @@ When the script finishes, you should see the following new files in your project
 
 ### "Create Mutation" (non-First call)
 When the script finishes, you should see the following new files in your project:
+
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/4.png?raw=true)
+
 - SerializableData_v2.ctl
 	- This is a new data structure tag... just like previously discussed
 - Mutate_v2_to_v2.vi
@@ -138,6 +144,7 @@ A few notes:
 ### "View Mutation History"
 This is a visualization tool and will not modify your class data or version in any manner.
 This menu item appears for all classes... This is not strictly a BlueSerializable.lvclass tool.
+
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/5.png?raw=true)
 
 
