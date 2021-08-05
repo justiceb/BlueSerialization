@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/justiceb/BlueSerialization">
-    <img src="Images/24.png" alt="Logo" width="80" height="80">
+    <img src="Images/24.png" alt="Logo">
   </a>
 
   <h3 align="center">Blue Serialization</h3>
