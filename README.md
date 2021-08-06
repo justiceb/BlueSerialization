@@ -217,6 +217,7 @@ Notes:
 ## Advanced documentation
 ### # Classes with only placeholder data will result in a "default" data tag
 Observe that the Soccer Player class private data is Placeholder only.
+
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/12.png?raw=true)
 
 This has 2 consequences:
@@ -311,24 +312,48 @@ At the moment, the following plug-in serializers are available:
 However, the BlueSerialization core was written so that other users can easily add more serializer plug-ins to this list without modifying the core package.  I hope to add XML to this list eventually.
 
 ## LabVIEW Class Mutation History
-BlueSerialization
+BlueSerialization leverages a little-known feature of LabVIEW classes called "LabVIEW class mutation history".
+Mutation history primarily exists within LabVIEW to support the flattening and unflattening of a LabVIEW class to/from flattened text.
+Since this feature isn't well known or well documented, I'll document it a bit here:
+### Get/Set mutation history API
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/21.png?raw=true)
+
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/22.png?raw=true)
+
+|Path |
+|--|
+| C:\Program Files (x86)\National Instruments\LabVIEW 2019\vi.lib\Utility\EditLVLibs\LVClass\Get Mutation History.vi |
+| C:\Program Files (x86)\National Instruments\LabVIEW 2019\vi.lib\Utility\EditLVLibs\LVClass\Set Mutation History.vi |
+
+### Mutation history typedef
+This typedef is, as shown below:
+
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/25.png?raw=true)
+
+| Field Name |  Description | 
+| ------------- | ------------- | ------------- |
+| Library Version | This matches the LVClass version type. <br> <br> This resets to v1.0.0.0 when the fully qualified class name changes. |
+| Old Name Index | 0 == current name. <br> <br> This value changes each time that the fully qualified class name changes. <br> <br> This value, in conjunction with the Library Version, provides a unique key for finding a mutation history index. <br> <br> This value is directly related to the "Parent Old Name Index" value of descendant children classes. |
+| Class Default Data | A new class mutation history entry is created each time that a class' private data is modified. <br> <br> This entry provides a "snapshot" of the private data. <br> <br> Note that if a class private data contains typedefs or nested objects, that updates to these items will not create a new mutation history entry |
+| Cluster Order Map | This describes any reordering of elements in the private data.  A value of  4294967294 indicates that order of an element has not changed. |
+| Parent Name | This contains the name of the Parent classes fully qualified name |
+| Parent Path | possibly unused? |
+| LabVIEW Version | HEX value displays the LabVIEW version |
+| User Comments | Basically a description field.  BlueSerialization leverages this field for keeping track of a class's mutation version.  Otherwise, to my knowledge, this field isn't used by LabVIEW internally. |
+| Mutation Flags | I have no idea |
+| Parent Old Name Index | This links to the "Old Name Index" of the parent class.  This allows us to lookup the mutation index for a parent given the child's mutation history. |
+| Parent Levels Added | This indicates the number of parent levels added. <br> <br> A value of 0 indicates that no parent levels were added |
+| Parent Levels Removed | This indicates the number of parent levels removed. <br> <br> A value of 0 indicates that no parent levels were removed. <br> <br> A value of 65535 indicates that ALL parent levels were removed|
 
 
 
 
 
-
-
-
-
-
-
-
-3. Clone the repo
+ - Clone the repo
    ```sh
    git clone https://github.com/justiceb/BlueSerialization.git
    ```
-4. Install NPM packages
+ - Install NPM packages
    ```sh
    npm install
    ```
