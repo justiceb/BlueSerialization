@@ -47,6 +47,7 @@ When this script finishes, you should see the following new files:
 
 A few notes:
 
+-   This project provider script will fail if your class is broken-arrow.  This is because the scripting is required to bring an object into memory in order to access mutation hitory.  An object cannot exist in memory if the class is broken.  If you forget and get an error, then fix your class and rerun this project provider script until you are able to complete it without error.
 -   The Get/SetSerializableData VIs are dynamic overrides. These provide access to the SerializableData in the private data. You should theoretically never have to modify these VIs. In fast, please DON'T modify these VIs unless you know what you are doing and have a good reason.
 -   The SerializableData.ctl provides access to the serializables for your class. This allows you to easily separate serializables from protected private data that you don't wan to be serialized/deserialized.
 -   Do NOT change the filename for SerializableData.ctl
@@ -82,6 +83,7 @@ When the script finishes, you should see the following new files in your project
 	- This is a new mutation conversion VI... just like previously discussed
 
 A few notes:
+-   This project provider script will fail if your class is broken-arrow.  This is because the scripting is required to bring an object into memory in order to access mutation hitory.  An object cannot exist in memory if the class is broken.
 -   In this example, the script will actually modify the Mutate_v1_to_v2.vi. We replace the SerializableData.ctl with SerializableData_v1.vi.
 -   You can mutate a class as many times as you'd like.
 -   Serialized text being converted from v1 to v3 will pass through both mutation VIs. (mutate_v1_to_v2.vi and mutate_v2_to_v3.vi). This is fine. However, it is technically allowable for users to directly modify the "HandleVersionMutation.vi" in a way that will allow you to write code that will convert v1 data directly to v3 data. I don't recommend doing this unless you know what you are doing, and have a good reason.
