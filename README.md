@@ -42,27 +42,6 @@
   </ol>
 </details>
 
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`justiceb`, `BlueSerialization`, `twitter_handle`, `bjustice@blueorigin.com`, `Blue Serialization`, `Serialize and deserialize LabVIEW classes using either JSONtext or TOML`
-
-
-### Built With
-
-* []()
-* []()
-* []()
-
-
-
-<!-- GETTING STARTED -->
 ## Getting Started
 
 This repository only houses the core for the framework.  You first need to decide which type of serializer that you want to use.  At the moment, the framework has the following supported serializers:
@@ -215,7 +194,7 @@ Notes:
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/11.png?raw=true)
 
 ## Advanced documentation
-### # Classes with only placeholder data will result in a "default" data tag
+###  Classes with only placeholder data will result in a "default" data tag
 Observe that the Soccer Player class private data is Placeholder only.
 
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/12.png?raw=true)
@@ -348,73 +327,10 @@ This typedef is, as shown below:
 
 
 
-
- - Clone the repo
-   ```sh
-   git clone https://github.com/justiceb/BlueSerialization.git
-   ```
- - Install NPM packages
-   ```sh
-   npm install
-   ```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/justiceb/BlueSerialization/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - bjustice@blueorigin.com
-
-Project Link: [https://github.com/justiceb/BlueSerialization](https://github.com/justiceb/BlueSerialization)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
-
-
+Distributed under the BSD-3 License. See `LICENSE` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
