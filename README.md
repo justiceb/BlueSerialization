@@ -192,7 +192,16 @@ Palette:
 -   This is used in conjunction with the serializer "Seriualize.Allow class slicing" option. (See above.)
 -   If class slicing is enabled on serialize, then the framework will slice to this class name
 
+## Consequence Table
+If you're going to use this library, then it's important for you to understand what changes to a class will result in backwards incompatible breaks with respect to deserialization of old text.  The following table documents all of this:
 
+| Change |  Backwards compatible with old serialized text? | Backwards compatible with old software builds? |
+| ------------- | ------------- | ------------- |
+| Parent class renamed | yes  | no |
+
+```
+<span style="color:red">some **This is Red Bold.** text</span>
+```
 
 
 
