@@ -198,19 +198,137 @@ If you're going to use this library, then it's important for you to understand w
 | Change |  Backwards compatible with old serialized text? | Backwards compatible with old software builds? |
 | ------------- | ------------- | ------------- |
 | Parent class renamed | yes  | no |
+| Parent class level added | yes  | no |
+| Parent class level removed | yes  | no |
+| Child or Parent class MAJOR version number incremented | yes  | no |
+| Child class renamed | no | no |
+| class mutation history deleted | no | no |
+| Changes to serializable data | maybe | maybe |
 
-```
-<span style="color:red">some **This is Red Bold.** text</span>
-```
+Notes:
+
+ - changes to serializable data are backwards compatible depending on the type of serializer used. Change the question to: "is this a backwards compatible change with respect to base-JSONtext?"
+-  Running the "Create Mutation" project provider script will increment your class's MAJOR version number.
+-  Don't delete class mutation history unless you have a good reason. You will break backwards compatibility with old serialized text since applications will no longer be able to use mutation history to determine the mutation path.
+-   You may find it helpful to manually increment your class's MAJOR version number sometime. This effectively allows you to disallow new serialized text to be loaded into old software builds.  
+
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/11.png?raw=true)
+
+## Advanced documentation
+### # Classes with only placeholder data will result in a "default" data tag
+Observe that the Soccer Player class private data is Placeholder only.
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/12.png?raw=true)
+
+This has 2 consequences:
+1.  Soccer Player does not have a section of data
+2.  The version for Soccer Player has a ".default" suffix
+
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/13.png?raw=true)
+
+A few notes about this behavior:
+-   If both the default tag and the class section data is mission, then deserialize will return an error.
+-   If both the default tag and the class sesion data exists, then deserialize will STILL consume the section data.
+
+###  BlueSerializable appears as "Root"
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/14.png?raw=true)
+
+A few notes about this:
+-   BlueSerializable does not have a section of data
+-   This was all done to reduce clutter in the serializable text, since we're not interested in the BlueSerialiazble class name or data
+
+##  Design Decisions
+### Problem Statement: There is no convenient mechanism to serialize and de-serialize LabVIEW objects.
+open-source libraries such as JSONtext, LV-TOML, and EasyXML have made it very easy to serialize and deserialize test to/from LabVIEW data structures.  Unfortunately, none of these libraries support LabVIEW classes.  As such, in order to use classes with these libraries, we used to have to be very careful not to include classes in serialized text, and then to have custom code for constructing/deconstructing objects from memory.  What a pain!
+
+### Goal: Gracefully serialize and de-serialize LabVIEW objects
+Subgoals:
+-   Support input/output of any arbitrary LabVIEW data structure
+-   Support nested objects
+-   Support arrays of objects
+-   Divorce serialization type from serializable data
+
+### Design Decision #1: Do NOT direct access private data through object (de)composition.
+During research, we discovered 2 libraries out in the world that solve object serialization through the usage of object (de)composition:
+
+1.  JSONtext branch with object support:  
+    [https://bitbucket.org/logmanoriginal/jsontext/src/lvobjectserialization/](https://bitbucket.org/logmanoriginal/jsontext/src/lvobjectserialization/)
+2.  paid 3rd party library "JSON Object Serialization by GCraftsman":  
+    [http://sine.ni.com/nips/cds/view/p/lang/en/nid/215788](http://sine.ni.com/nips/cds/view/p/lang/en/nid/215788)
+ 
+"LogMAN" from the LAVA forum even went so far as to make available his reuse library for class (de)composition:
+[https://lavag.org/topic/21894-openg-and-object-compatibility/?do=findComment&comment=134688](https://lavag.org/topic/21894-openg-and-object-compatibility/?do=findComment&comment=134688)
+
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/16.png?raw=true)
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/17.png?raw=true)
+
+This code was written with direction from the LabVIEW wiki's extremely relevant wiki page:  
+[https://labviewwiki.org/wiki/LabVIEW_Object](https://labviewwiki.org/wiki/LabVIEW_Object)
+
+There are some Pros/Cons to this approach.
+Pros:
+-   ALL classes in LabVIEW become inherently serializable
+-   Doesn't require data accessor VIs
+-   Most closely aligns with the precedent set by JSONtext and other similar serialization libraries
+
+Cons:
+-   Breaks the LVOOP covenant that private data requires data accessors for access
+-   Pretty serious security risk. There is no way to protect private data when serializing/de-serializing
+-   Slow. flatten/unflatten and de(composition) is not cheap
+
+### Design Decision #2: All serializable data must appear in a specific typedef'd cluster within the class private data
+In the figure below, observe that there exists a "SerializableData" cluster. A few notes about this:
+
+-   Only data within this cluster is serialized and deserialized. All other data is ignored.
+-   This is a typedef'd cluster
+-   This cluster will always be named "SerializableData"
+
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/18.png?raw=true)
+
+There are some Pros/Cons to this approach:
+Pros:
+-   Allows for segregation of serializable and non-serializable data
+    -   Improves read-ability
+    -   Allows user to protect private data from being exposed through serialization
+-   Allows for the creation of a single future-proof read/write data accessor for the entire "SerializableData" cluster
+
+Cons:
+-   You have to create the cluster and data accessors → a non-zero amount of work
+-   Forces users to organize their data into this paradigm
+    -   Will require rework of existing classes wishing to conform to this requirement
+
+### Design Decision #3: The serializer type (JSON, TOML, XML) should be divorced from the serializable data.
+In the figure below, observe that we can switch between JSON and TOML serialization simply be swapping out the BlueSerializer class input:
+
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/19.png?raw=true)
+
+At the moment, the following plug-in serializers are available:
+
+| Text Type  |  VIP Name | VIP dependency |
+| ------------- | ------------- | ------------- |
+| JSON  | [BlueJSONTextSerializer](https://github.com/justiceb/BlueJSONTextSerializer)  | JSONtext |
+| TOML  | [BlueTOMLSerializer](https://github.com/justiceb/BlueTOMLSerializer)  | LV-TOML |
+
+However, the BlueSerialization core was written so that other users can easily add more serializer plug-ins to this list without modifying the core package.  I hope to add XML to this list eventually.
+
+## LabVIEW Class Mutation History
+BlueSerialization
 
 
 
 
-1. Clone the repo
+
+
+
+
+
+
+
+
+3. Clone the repo
    ```sh
    git clone https://github.com/justiceb/BlueSerialization.git
    ```
-2. Install NPM packages
+4. Install NPM packages
    ```sh
    npm install
    ```
