@@ -32,7 +32,7 @@ This script will behave differently depending on whether or not it's the first t
 -  The first time that this script runs against your class, the following work will be performed:
 	- "SerializableData.clt" will be created and added to your class's private data
 		- This will be named "SerializableData" within your private data.
-		- Other items in your private data with this name will be forcibly rename.
+		- Other items in your private data with this name will be forcibly renamed.
 		- Please, never change this filename
 	- GetSerializableData.vi will be created and added
 	- SetSerializableData.vi will be created and added
@@ -48,7 +48,7 @@ When this script finishes, you should see the following new files:
 A few notes:
 
 -   This project provider script will fail if your class is broken-arrow.  This is because the scripting is required to bring an object into memory in order to access mutation hitory.  An object cannot exist in memory if the class is broken.  If you forget and get an error, then fix your class and rerun this project provider script until you are able to complete it without error.
--   The Get/SetSerializableData VIs are dynamic overrides. These provide access to the SerializableData in the private data. You should theoretically never have to modify these VIs. In fast, please DON'T modify these VIs unless you know what you are doing and have a good reason.
+-   The Get/SetSerializableData VIs are dynamic overrides. These provide access to the SerializableData in the private data. You should theoretically never have to modify these VIs. In fact, please DON'T modify these VIs unless you know what you are doing and have a good reason.
 -   The SerializableData.ctl provides access to the serializables for your class. This allows you to easily separate serializables from protected private data that you don't wan to be serialized/deserialized.
 -   Do NOT change the filename for SerializableData.ctl
 
