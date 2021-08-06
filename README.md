@@ -148,6 +148,51 @@ This menu item appears for all classes... This is not strictly a BlueSerializabl
 
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/5.png?raw=true)
 
+## API
+simple example:
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/6.png?raw=true)
+
+Palette:
+
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/7.png?raw=true)
+
+### API - Serialize
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/8.png?raw=true)
+
+-   Input. This can be any LabVIEW data structure. This can be as complex as you'd like... nested clusters, classes, arrays, etc.
+    -   NOTE: Don't ask me "does BlueSerialization support Map Collections, or XYZ datatypes? The answer to this question lies in whether or not the selected serializer supports this data type. For example, JSONtext does not support map collections. The BlueSerialization provides a framework for decomposing/composing LabVIEW class instances and then leveraging the selected serializer for handling all other data types.
+-   Output. This is serialized text. If you used a JSONtext serializer, then this will be JSON text.
+
+| Category  |  Name | Default Value | Description |
+| ------------- | ------------- | ------------- | ------------- |
+| class slicing | slice objects per SetSerializeSliceClass.vi?  | False | If True, then the wired object will be sliced to the class layer specified in the "SetSerializeSliceClass override. (No-op parent will not perform any slicing.)|
+| non-Blue | serialize non-BlueSerializable objects as hex?  | False | If True, then non-BlueSerializable objects will be flattened as hex data using the LabVIEW "flatten to string" node. If false, an error will be returned when a non-BlueSerializable object is discovered |
+
+### API - Deserialize
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/9.png?raw=true)
+
+-   Serialized Object String. This is your serialized text (JSON, TOML, etc.)
+-   Anything. This is your reference data structure that you wish to adapt the serialized text into.
+-   Variant. Use the "Variant to data" node to convert this variant into a LabVIEW datatype. Generally, you will use the wire-type of the "Anything" input.
+
+| Category  |  Name | Default Value | Description |
+| ------------- | ------------- | ------------- | ------------- |
+| expansion | expand objects on type conflict?  | False | If True, then the wired object is allowed to be more-specific than the serialized text. The returned object will be the more specific object. If false, then an error will be returned in this situation. |
+| class slicing | slice flattened object data on error?  | False | If True, then the framework will iterate upwards through a class hierarchy until it finds a load-able class instance. This means that the returned data may be less-specific than the serialized text. |
+| class slicing | sliceable class names  | empty str array |  If a class isn't found in memory, then the framework will be allowed to slice class names in this list until finding a class in the hierarchy that is load-able. |
+| non-Blue | deserialize non-BlueSerializable objects from hex?  | False |  If True, then the framework will unflatten non-BlueSerializable objects using the "unflatten from text" node. If False, then non-BlueSerializable objects found in the reference data will yield and error. |
+| Mutation | error on inserted parent levels?  | False |  If False, then the framework allows for class mutation history where a parent level was added. This means that your output data will contain default-data for this added class layer. If True, then error |
+| Mutation |  error on  obsolete  parent levels? | False |  If False, then the framework allows for class mutation history where a parent level was removed. This means that data for dropped class layers in your serialized text will also be unused. If True, then error. |
+| Data preservation | Preserve wired non-serialized data? | Don't Preserve | "Don't Preserve": non-serialized data will not be preserved. <br> "Preserve (error on less-specific wired types)":  non-serialized data will be preserved. However, if a wired object is found to be less specific than the serialized object, then you will receive an error. <br> "Preserve (except on less-specific wired types)":  non-serialized data will be preserved except where a wired object is found to be less specific than the serialized object. (It's not possible to preserve data in this situation without class composition.)|
+
+### API - Set Serialize Slice Class
+![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/10.png?raw=true)
+
+-   This is used in conjunction with the serializer "Seriualize.Allow class slicing" option. (See above.)
+-   If class slicing is enabled on serialize, then the framework will slice to this class name
+
+
+
 
 
 
