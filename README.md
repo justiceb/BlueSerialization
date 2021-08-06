@@ -150,6 +150,7 @@ This menu item appears for all classes... This is not strictly a BlueSerializabl
 
 ## API
 simple example:
+
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/6.png?raw=true)
 
 Palette:
@@ -183,7 +184,7 @@ Palette:
 | non-Blue | deserialize non-BlueSerializable objects from hex?  | False |  If True, then the framework will unflatten non-BlueSerializable objects using the "unflatten from text" node. If False, then non-BlueSerializable objects found in the reference data will yield and error. |
 | Mutation | error on inserted parent levels?  | False |  If False, then the framework allows for class mutation history where a parent level was added. This means that your output data will contain default-data for this added class layer. If True, then error |
 | Mutation |  error on  obsolete  parent levels? | False |  If False, then the framework allows for class mutation history where a parent level was removed. This means that data for dropped class layers in your serialized text will also be unused. If True, then error. |
-| Data preservation | Preserve wired non-serialized data? | Don't Preserve | "Don't Preserve": non-serialized data will not be preserved. <br> "Preserve (error on less-specific wired types)":  non-serialized data will be preserved. However, if a wired object is found to be less specific than the serialized object, then you will receive an error. <br> "Preserve (except on less-specific wired types)":  non-serialized data will be preserved except where a wired object is found to be less specific than the serialized object. (It's not possible to preserve data in this situation without class composition.)|
+| Data preservation | Preserve wired non-serialized data? | Don't Preserve | "Don't Preserve": non-serialized data will not be preserved. <br> <br> "Preserve (error on less-specific wired types)":  non-serialized data will be preserved. However, if a wired object is found to be less specific than the serialized object, then you will receive an error. <br> <br> "Preserve (except on less-specific wired types)":  non-serialized data will be preserved except where a wired object is found to be less specific than the serialized object. (It's not possible to preserve data in this situation without class composition.)|
 
 ### API - Set Serialize Slice Class
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/10.png?raw=true)
