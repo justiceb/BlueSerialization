@@ -331,7 +331,7 @@ This typedef is, as shown below:
 ![enter image description here](https://github.com/justiceb/BlueSerialization/blob/main/Images/25.png?raw=true)
 
 | Field Name |  Description | 
-| ------------- | ------------- | ------------- |
+| ------------- | ------------- |
 | Library Version | This matches the LVClass version type. <br> <br> This resets to v1.0.0.0 when the fully qualified class name changes. |
 | Old Name Index | 0 == current name. <br> <br> This value changes each time that the fully qualified class name changes. <br> <br> This value, in conjunction with the Library Version, provides a unique key for finding a mutation history index. <br> <br> This value is directly related to the "Parent Old Name Index" value of descendant children classes. |
 | Class Default Data | A new class mutation history entry is created each time that a class' private data is modified. <br> <br> This entry provides a "snapshot" of the private data. <br> <br> Note that if a class private data contains typedefs or nested objects, that updates to these items will not create a new mutation history entry |
