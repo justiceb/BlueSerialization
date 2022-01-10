@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2020.1" Created_Date="2021-01-18 15:48:40" Modified_Date="2022-01-04 15:17:41" Creator="Brent Justice" Comments="" ID="2ba0870d819c83a8ae5eb11e9b61cd7c">
+<VI_Package_Builder_Settings Version="2020.1" Created_Date="2021-01-18 15:48:40" Modified_Date="2022-01-10 16:12:22" Creator="Brent Justice" Comments="" ID="df226af955d7ed62fcd304254f8e16a9">
   <Library_General_Settings>
     <Package_File_Name>Blue_Origin_lib_BlueSerialization</Package_File_Name>
-    <Library_Version>2.3.1.64</Library_Version>
+    <Library_Version>2.3.2.65</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>Source</Library_Source_Folder>
     <Library_Output_Folder>.</Library_Output_Folder>
@@ -43,7 +43,7 @@
       <Copyright/>
       <Packager/>
       <URL/>
-      <Release_Notes>added class name to error code 6506 and 6507 for better debug purposes</Release_Notes>
+      <Release_Notes>BUG FIX - array of classes truncates serialized data in previous version when number of children layers was different for each element.</Release_Notes>
     </Description>
     <Destinations>
       <Toolkit_VIs>
@@ -252,7 +252,7 @@
         <Path>Source\BlueSerializer\Deserialize_VIM.vim</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>95AFF80059459C058E6CBAB949E9DBE0</GUID>
+      <GUID>36BF1D779EF7A966015D44DCD97B6C84</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>

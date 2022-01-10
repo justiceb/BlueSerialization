@@ -21,12 +21,6 @@
 		<Item Name="BlueSerializationExample.lvlib" Type="Library" URL="../Example/BlueSerializationExample.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
-				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi">
-					<Property Name="marked" Type="Int">0</Property>
-				</Item>
-				<Item Name="Array of VData to VCluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VCluster__ogtk.vi">
-					<Property Name="marked" Type="Int">0</Property>
-				</Item>
 				<Item Name="Build Error Cluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/error/error.llb/Build Error Cluster__ogtk.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
@@ -37,9 +31,6 @@
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
 				<Item Name="Get PString__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get PString__ogtk.vi">
-					<Property Name="marked" Type="Int">0</Property>
-				</Item>
-				<Item Name="Get TDEnum from Data__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get TDEnum from Data__ogtk.vi">
 					<Property Name="marked" Type="Int">0</Property>
 				</Item>
 				<Item Name="Get Variant Attributes__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Variant Attributes__ogtk.vi">
