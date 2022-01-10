@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2020.1" Created_Date="2021-01-18 15:48:40" Modified_Date="2021-12-01 16:43:51" Creator="Brent Justice" Comments="" ID="c43686ffbc097c1e1b462b0fc92b4533">
+<VI_Package_Builder_Settings Version="2020.1" Created_Date="2021-01-18 15:48:40" Modified_Date="2022-01-04 15:17:41" Creator="Brent Justice" Comments="" ID="2ba0870d819c83a8ae5eb11e9b61cd7c">
   <Library_General_Settings>
     <Package_File_Name>Blue_Origin_lib_BlueSerialization</Package_File_Name>
-    <Library_Version>2.3.0.63</Library_Version>
+    <Library_Version>2.3.1.64</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>Source</Library_Source_Folder>
     <Library_Output_Folder>.</Library_Output_Folder>
@@ -43,8 +43,7 @@
       <Copyright/>
       <Packager/>
       <URL/>
-      <Release_Notes>1) BlueSerializable.lvclass DD methods are now clone reentrant.  This allows for nested same-class serialization to work properly
-2) mass recompile.  (removed an insane object)</Release_Notes>
+      <Release_Notes>added class name to error code 6506 and 6507 for better debug purposes</Release_Notes>
     </Description>
     <Destinations>
       <Toolkit_VIs>
@@ -253,7 +252,7 @@
         <Path>Source\BlueSerializer\Deserialize_VIM.vim</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>6CEC0E230BAE7AA43B3AEB3E06820B28</GUID>
+      <GUID>95AFF80059459C058E6CBAB949E9DBE0</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>
