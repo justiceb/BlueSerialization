@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2020.1" Created_Date="2021-01-18 15:48:40" Modified_Date="2022-01-10 16:12:22" Creator="Brent Justice" Comments="" ID="df226af955d7ed62fcd304254f8e16a9">
+<VI_Package_Builder_Settings Version="2020.1" Created_Date="2021-01-18 15:48:40" Modified_Date="2022-11-18 12:57:56" Creator="Brent Justice" Comments="" ID="26c2f175da942c175e429e14e73c59fb">
   <Library_General_Settings>
     <Package_File_Name>Blue_Origin_lib_BlueSerialization</Package_File_Name>
-    <Library_Version>2.3.2.65</Library_Version>
+    <Library_Version>2.3.3.66</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>Source</Library_Source_Folder>
     <Library_Output_Folder>.</Library_Output_Folder>
@@ -43,7 +43,7 @@
       <Copyright/>
       <Packager/>
       <URL/>
-      <Release_Notes>BUG FIX - array of classes truncates serialized data in previous version when number of children layers was different for each element.</Release_Notes>
+      <Release_Notes>BUG FIX - BlueSerializable is now able to also inherit from an interface class.  Previously, this would break this library.</Release_Notes>
     </Description>
     <Destinations>
       <Toolkit_VIs>
@@ -181,6 +181,7 @@
       <close_labview_before_install>false</close_labview_before_install>
       <restart_labview_after_install>false</restart_labview_after_install>
       <skip_mass_compile_after_install>false</skip_mass_compile_after_install>
+      <install_into_global_environment>false</install_into_global_environment>
     </LabVIEW>
     <VI_Docs>
       <Edit_VI_Description>false</Edit_VI_Description>
@@ -252,7 +253,7 @@
         <Path>Source\BlueSerializer\Deserialize_VIM.vim</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>36BF1D779EF7A966015D44DCD97B6C84</GUID>
+      <GUID>8A5E7DF40F24386D00CDBA43A4E6DA6A</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>

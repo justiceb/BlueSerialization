@@ -68,6 +68,8 @@
 				</Item>
 				<Item Name="JDP Utility.lvlib" Type="Library" URL="/&lt;vilib&gt;/JDP Science/JDP Science Common Utilities/JDP Utility.lvlib"/>
 				<Item Name="NI_Data Type.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/Data Type/NI_Data Type.lvlib"/>
+				<Item Name="Qualified Name Array To Single String.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/LVClass/Qualified Name Array To Single String.vi"/>
+				<Item Name="Single String To Qualified Name Array.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/LVClass/Single String To Qualified Name Array.vi"/>
 			</Item>
 			<Item Name="BlueSerializationProviderDependencyLinker.vi" Type="VI" URL="/&lt;resource&gt;/Framework/Providers/BlueSerializationProvider/BlueSerializationProviderDependencyLinker.vi">
 				<Property Name="marked" Type="Int">0</Property>
